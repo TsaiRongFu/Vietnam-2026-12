@@ -194,6 +194,51 @@
   }
   .tip.warn{color:var(--lotus-dark); background:var(--lotus-tint); border-left-color:var(--lotus);}
 
+  /* ---------- PHOTOS ---------- */
+  figure.photo{
+    margin:0 0 12px; border-radius:12px; overflow:hidden;
+    background:linear-gradient(135deg, var(--teal-tint), var(--saffron-tint));
+    position:relative; min-height:120px;
+  }
+  figure.photo img{
+    display:block; width:100%; height:auto; max-height:340px; object-fit:cover;
+    aspect-ratio:16/9;
+  }
+  figure.photo figcaption{
+    font-size:0.74rem; color:var(--ink-soft); padding:6px 2px 0; text-align:right;
+  }
+  figure.photo figcaption a{color:var(--ink-soft); text-decoration:none; border-bottom:1px dotted var(--ink-soft);}
+  figure.photo .fallback{
+    display:none; align-items:center; justify-content:center; flex-direction:column; gap:6px;
+    aspect-ratio:16/9; color:var(--ink-soft); font-size:0.82rem; text-align:center; padding:14px;
+  }
+  figure.photo .fallback .emoji{font-size:2rem;}
+  figure.photo.broken img{display:none;}
+  figure.photo.broken .fallback{display:flex;}
+  figure.photo.food{max-width:260px;}
+  figure.photo.food img{aspect-ratio:4/3; max-height:200px;}
+  .food-gallery{
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:16px; margin-top:16px;
+  }
+  .food-gallery .food-name{font-size:0.88rem; font-weight:700; margin-top:2px;}
+  .food-gallery .food-en{font-size:0.76rem; color:var(--ink-soft); font-style:italic;}
+
+  /* ---------- MAP / GRAB ACTIONS ---------- */
+  .map-actions{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;}
+  .map-actions .map-label{
+    font-size:0.78rem; color:var(--ink-soft); align-self:center; margin-right:2px; font-weight:600;
+  }
+  a.maplink{
+    display:inline-flex; align-items:center; gap:5px;
+    font-size:0.8rem; font-weight:700; text-decoration:none;
+    padding:6px 12px; border-radius:999px; border:1px solid var(--line);
+    background:#fff; color:var(--ink); transition:all .15s ease;
+  }
+  a.maplink:hover{transform:translateY(-1px); box-shadow:0 4px 10px -4px rgba(32,36,43,0.3);}
+  a.maplink.gmap{border-color:#bcd8f5; color:#1a56a8; background:#eef5ff;}
+  a.maplink.amap{border-color:#d7d7dc; color:#3a3a3f; background:#f4f4f6;}
+  a.maplink.grab{border-color:#bfe0c9; color:#0a7a3c; background:#e9f8ee;}
+
   /* ---------- INFO / PREP SECTION ---------- */
   .grid-2{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px;}
   .info-card{
@@ -321,6 +366,7 @@
           <li>路邊白牌計程車建議認明 <b>Vinasun（白綠色）</b>或 <b>Mai Linh（綠色）</b>兩大信譽品牌，上車前確認跳表</li>
           <li>市區景點多集中在第一郡（District 1），彼此步行可達，但人行道常被機車佔用，過馬路時放慢腳步、保持穩定速度直行，車流會自然繞過你</li>
           <li>古芝地道、湄公河屬市郊行程，建議參加當地一日團或包車，較省時省力</li>
+          <li>本頁每個景點下方都附有 <span class="tag teal" style="padding:2px 8px;">🗺️ Google 地圖</span> <span class="tag" style="padding:2px 8px;">🍎 Apple 地圖</span> <span class="tag lotus" style="padding:2px 8px;">🚗 Grab 叫車</span> 快速連結，手機點下去就能直接以目前位置為起點開始導航或叫車；若手機沒安裝 Grab App，Grab 連結可能不會有反應，屬正常現象</li>
         </ul>
       </div>
 
@@ -343,6 +389,52 @@
         </ul>
       </div>
     </div>
+
+    <div class="food-gallery">
+      <div>
+        <figure class="photo food">
+          <img src="images/food-pho.jpg" alt="越式河粉 Phở" loading="lazy" onerror="this.closest('figure').classList.add('broken')">
+          <div class="fallback"><span class="emoji">🍜</span>圖片載入失敗</div>
+        </figure>
+        <div class="food-name">河粉 <span class="food-en">Phở</span></div>
+      </div>
+      <div>
+        <figure class="photo food">
+          <img src="images/food-banh-mi.jpg" alt="越式法國麵包 Bánh mì" loading="lazy" onerror="this.closest('figure').classList.add('broken')">
+          <div class="fallback"><span class="emoji">🥖</span>圖片載入失敗</div>
+        </figure>
+        <div class="food-name">法國麵包 <span class="food-en">Bánh mì</span></div>
+      </div>
+      <div>
+        <figure class="photo food">
+          <img src="images/food-goi-cuon.jpg" alt="生春捲 Gỏi cuốn" loading="lazy" onerror="this.closest('figure').classList.add('broken')">
+          <div class="fallback"><span class="emoji">🥗</span>圖片載入失敗</div>
+        </figure>
+        <div class="food-name">生春捲 <span class="food-en">Gỏi cuốn</span></div>
+      </div>
+      <div>
+        <figure class="photo food">
+          <img src="images/food-bun-thit-nuong.jpg" alt="烤肉米線 Bún thịt nướng" loading="lazy" onerror="this.closest('figure').classList.add('broken')">
+          <div class="fallback"><span class="emoji">🍚</span>圖片載入失敗</div>
+        </figure>
+        <div class="food-name">烤肉米線 <span class="food-en">Bún thịt nướng</span></div>
+      </div>
+      <div>
+        <figure class="photo food">
+          <img src="images/food-ca-phe-sua-da.jpg" alt="越式煉乳冰咖啡 Cà phê sữa đá" loading="lazy" onerror="this.closest('figure').classList.add('broken')">
+          <div class="fallback"><span class="emoji">☕</span>圖片載入失敗</div>
+        </figure>
+        <div class="food-name">煉乳冰咖啡 <span class="food-en">Cà phê sữa đá</span></div>
+      </div>
+      <div>
+        <figure class="photo food">
+          <img src="images/food-coconut-ben-tre.jpg" alt="檳椥椰子" loading="lazy" onerror="this.closest('figure').classList.add('broken')">
+          <div class="fallback"><span class="emoji">🥥</span>圖片載入失敗</div>
+        </figure>
+        <div class="food-name">檳椥椰子製品 <span class="food-en">Kẹo dừa Bến Tre</span></div>
+      </div>
+    </div>
+    <p style="font-size:0.75rem; color:var(--ink-soft); margin-top:10px; text-align:right;">以上美食照片來源：<a href="https://commons.wikimedia.org" target="_blank" rel="noopener" style="color:var(--ink-soft);">Wikimedia Commons</a>（示意圖，非店家實拍）</p>
   </section>
 
   <!-- ============ DAY 1 ============ -->
@@ -373,11 +465,22 @@
           <div class="dot">🏪</div>
           <div class="stop-card">
             <div class="stop-top"><span class="stop-title">濱城市場<span class="en">Bến Thành Market</span></span><span class="stop-time">09:00</span></div>
+            <figure class="photo">
+              <img src="images/ben-thanh-market.jpg" alt="濱城市場鐘塔" loading="lazy" onerror="this.closest('figure').classList.add('broken')">
+              <div class="fallback"><span class="emoji">🏪</span>圖片載入失敗，點下方連結查看</div>
+              <figcaption>圖片來源：<a href="https://commons.wikimedia.org/wiki/File:B%E1%BA%BFn_Th%C3%A0nh_Market.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></figcaption>
+            </figure>
             <div class="stop-desc">胡志明市最具代表性的地標市場，1914 年落成的鐘塔是打卡經典畫面。裡面可買紀念品、越南咖啡豆、腰果、乾果、絲綢圍巾，也有小吃區可以先吃碗河粉當早餐。<b>殺價是常態</b>，開價通常可從對半開始談。</div>
             <div class="info-grid">
               <div><b>地址</b>：Lê Lợi, Bến Thành, Quận 1</div>
               <div><b>開放時間</b>：市場內 06:00–18:00；周邊轉為夜市小吃街 18:00–23:00</div>
               <div><b>門票</b>：免費入場</div>
+            </div>
+            <div class="map-actions">
+              <span class="map-label">📍 從目前位置前往：</span>
+              <a class="maplink gmap" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=Ch%E1%BB%A3%20B%E1%BA%BFn%20Th%C3%A0nh%2C%20L%C3%AA%20L%E1%BB%A3i%2C%20B%E1%BA%BFn%20Th%C3%A0nh%2C%20Qu%E1%BA%ADn%201%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh&travelmode=driving">🗺️ Google 地圖</a>
+              <a class="maplink amap" href="https://maps.apple.com/?daddr=Ch%E1%BB%A3%20B%E1%BA%BFn%20Th%C3%A0nh%2C%20L%C3%AA%20L%E1%BB%A3i%2C%20B%E1%BA%BFn%20Th%C3%A0nh%2C%20Qu%E1%BA%ADn%201%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh&dirflg=d">🍎 Apple 地圖</a>
+              <a class="maplink grab" href="grab://open?screenType=BOOKING&dropOffKeyword=Ch%E1%BB%A3%20B%E1%BA%BFn%20Th%C3%A0nh%2C%20Qu%E1%BA%ADn%201%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh">🚗 Grab 叫車</a>
             </div>
             <div class="tip">💡 若時間允許，晚上可以再回來一次——白天逛市場、晚上吃夜市路邊攤，是完全不同的兩種體驗。</div>
           </div>
@@ -393,6 +496,12 @@
               <div><b>開放時間</b>：約 08:00–22:00</div>
               <div><b>門票</b>：免費，逛街走走約 20–30 分鐘即可</div>
             </div>
+            <div class="map-actions">
+              <span class="map-label">📍 從目前位置前往：</span>
+              <a class="maplink gmap" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=%C4%90%C6%B0%E1%BB%9Dng%20S%C3%A1ch%20Nguy%E1%BB%85n%20V%C4%83n%20B%C3%ACnh%2C%20Qu%E1%BA%ADn%201%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh&travelmode=walking">🗺️ Google 地圖</a>
+              <a class="maplink amap" href="https://maps.apple.com/?daddr=%C4%90%C6%B0%E1%BB%9Dng%20S%C3%A1ch%20Nguy%E1%BB%85n%20V%C4%83n%20B%C3%ACnh%2C%20Qu%E1%BA%ADn%201%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh&dirflg=w">🍎 Apple 地圖</a>
+              <a class="maplink grab" href="grab://open?screenType=BOOKING&dropOffKeyword=%C4%90%C6%B0%E1%BB%9Dng%20S%C3%A1ch%20Nguy%E1%BB%85n%20V%C4%83n%20B%C3%ACnh%2C%20Qu%E1%BA%ADn%201%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh">🚗 Grab 叫車</a>
+            </div>
           </div>
         </div>
 
@@ -400,11 +509,22 @@
           <div class="dot">✉️</div>
           <div class="stop-card">
             <div class="stop-top"><span class="stop-title">西貢中央郵政局<span class="en">Saigon Central Post Office</span></span><span class="stop-time">11:15</span></div>
+            <figure class="photo">
+              <img src="images/saigon-post-office.jpg" alt="西貢中央郵政局內部大廳" loading="lazy" onerror="this.closest('figure').classList.add('broken')">
+              <div class="fallback"><span class="emoji">✉️</span>圖片載入失敗，點下方連結查看</div>
+              <figcaption>圖片來源：<a href="https://commons.wikimedia.org/wiki/File:Saigon_Central_Post_Office.JPG" target="_blank" rel="noopener">Wikimedia Commons</a></figcaption>
+            </figure>
             <div class="stop-desc">法國建築師 Gustave Eiffel 團隊參與設計，融合哥德與文藝復興風格，挑高大廳與復古地圖壁畫是必拍畫面。現在仍是實際運作中的郵局，可以現場寄一張明信片回台灣，作為旅行紀念。緊鄰紅教堂（西貢聖母聖殿主教座堂），教堂目前部分整修中，外觀仍可欣賞拍照。</div>
             <div class="info-grid">
               <div><b>地址</b>：2 Công xã Paris, Bến Nghé, Quận 1</div>
               <div><b>開放時間</b>：週一至五 07:00–19:00；週末 08:00–18:00</div>
               <div><b>門票</b>：免費</div>
+            </div>
+            <div class="map-actions">
+              <span class="map-label">📍 從目前位置前往：</span>
+              <a class="maplink gmap" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=B%C6%B0u%20%C4%91i%E1%BB%87n%20Trung%20t%C3%A2m%20S%C3%A0i%20G%C3%B2n%2C%202%20C%C3%B4ng%20x%C3%A3%20Paris%2C%20B%E1%BA%BFn%20Ngh%C3%A9%2C%20Qu%E1%BA%ADn%201%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh&travelmode=walking">🗺️ Google 地圖</a>
+              <a class="maplink amap" href="https://maps.apple.com/?daddr=B%C6%B0u%20%C4%91i%E1%BB%87n%20Trung%20t%C3%A2m%20S%C3%A0i%20G%C3%B2n%2C%202%20C%C3%B4ng%20x%C3%A3%20Paris%2C%20Qu%E1%BA%ADn%201%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh&dirflg=w">🍎 Apple 地圖</a>
+              <a class="maplink grab" href="grab://open?screenType=BOOKING&dropOffKeyword=B%C6%B0u%20%C4%91i%E1%BB%87n%20Trung%20t%C3%A2m%20S%C3%A0i%20G%C3%B2n%2C%20Qu%E1%BA%ADn%201%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh">🚗 Grab 叫車</a>
             </div>
             <div class="tip">💡 大廳內有專售明信片與郵票的小攤，買好可直接在現場的老式郵筒投遞。</div>
           </div>
@@ -422,12 +542,23 @@
           <div class="dot">🏛️</div>
           <div class="stop-card">
             <div class="stop-top"><span class="stop-title">統一宮（獨立宮）<span class="en">Independence Palace / Reunification Palace</span></span><span class="stop-time">13:30</span></div>
+            <figure class="photo">
+              <img src="images/independence-palace.jpg" alt="統一宮（獨立宮）建築外觀" loading="lazy" onerror="this.closest('figure').classList.add('broken')">
+              <div class="fallback"><span class="emoji">🏛️</span>圖片載入失敗，點下方連結查看</div>
+              <figcaption>圖片來源：<a href="https://commons.wikimedia.org/wiki/File:Independence_Palace(Reunification_Palace).JPG" target="_blank" rel="noopener">Wikimedia Commons</a></figcaption>
+            </figure>
             <div class="stop-desc">1975 年 4 月 30 日北越坦克攻破大門的歷史現場，象徵越戰結束、南北統一。建築保留 1960–70 年代原貌，包含總統辦公室、宴會廳、放映室，地下室更完整保留當年的作戰指揮中心與通訊室，是全區最具「時間膠囊」感的一站。</div>
             <div class="info-grid">
               <div><b>地址</b>：135 Nam Kỳ Khởi Nghĩa, Quận 1</div>
               <div><b>開放時間</b>：07:00–18:00（每日開放；售票口約於閉館前停止售票）</div>
               <div><b>門票</b>：宮殿＋展覽全票約 80,000 VND；學生／60 歲以上長者約 40,000 VND；兒童（6 歲以上未滿 16 歲）約 20,000 VND；電動遊園車另計約 25,000 VND／人</div>
               <div><b>建議停留</b>：約 1–1.5 小時</div>
+            </div>
+            <div class="map-actions">
+              <span class="map-label">📍 從目前位置前往：</span>
+              <a class="maplink gmap" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=Dinh%20%C4%90%E1%BB%99c%20L%E1%BA%ADp%2C%20135%20Nam%20K%E1%BB%B3%20Kh%E1%BB%9Fi%20Ngh%C4%A9a%2C%20Qu%E1%BA%ADn%201%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh&travelmode=driving">🗺️ Google 地圖</a>
+              <a class="maplink amap" href="https://maps.apple.com/?daddr=Dinh%20%C4%90%E1%BB%99c%20L%E1%BA%ADp%2C%20135%20Nam%20K%E1%BB%B3%20Kh%E1%BB%9Fi%20Ngh%C4%A9a%2C%20Qu%E1%BA%ADn%201%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh&dirflg=d">🍎 Apple 地圖</a>
+              <a class="maplink grab" href="grab://open?screenType=BOOKING&dropOffKeyword=Dinh%20%C4%90%E1%BB%99c%20L%E1%BA%ADp%2C%20Qu%E1%BA%ADn%201%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh">🚗 Grab 叫車</a>
             </div>
             <div class="tip">💡 售票處備有免費樓層平面圖與參觀動線建議，可先索取再進場，能更有效率地走完各樓層。</div>
           </div>
@@ -437,12 +568,23 @@
           <div class="dot">🎖️</div>
           <div class="stop-card">
             <div class="stop-top"><span class="stop-title">戰爭遺跡博物館<span class="en">War Remnants Museum</span></span><span class="stop-time">15:00</span></div>
+            <figure class="photo">
+              <img src="images/war-remnants-museum.jpg" alt="戰爭遺跡博物館外觀與戶外展示的軍事裝備" loading="lazy" onerror="this.closest('figure').classList.add('broken')">
+              <div class="fallback"><span class="emoji">🎖️</span>圖片載入失敗，點下方連結查看</div>
+              <figcaption>圖片來源：<a href="https://commons.wikimedia.org/wiki/File:War_Remnants_Museum.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></figcaption>
+            </figure>
             <div class="stop-desc">陳列越戰期間的裝備、照片與紀錄，包含著名的橙劑（Agent Orange）受害紀實展區，內容寫實而沉重，建議提前做好心理準備，較不適合年幼兒童。戶外庭院展示美軍坦克、戰機、直升機等大型裝備，適合喜歡近拍細節的旅人。</div>
             <div class="info-grid">
               <div><b>地址</b>：28 Võ Văn Tần, Quận 3</div>
               <div><b>開放時間</b>：07:30–17:30（售票至 17:00），全年無休</div>
               <div><b>門票</b>：全票約 40,000 VND；兒童／學生／長者半價；6 歲以下、身障人士免費</div>
               <div><b>建議停留</b>：約 1.5 小時</div>
+            </div>
+            <div class="map-actions">
+              <span class="map-label">📍 從目前位置前往：</span>
+              <a class="maplink gmap" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=B%E1%BA%A3o%20t%C3%A0ng%20Ch%E1%BB%A9ng%20t%C3%ADch%20Chi%E1%BA%BFn%20tranh%2C%2028%20V%C3%B5%20V%C4%83n%20T%E1%BA%A7n%2C%20Qu%E1%BA%ADn%203%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh&travelmode=driving">🗺️ Google 地圖</a>
+              <a class="maplink amap" href="https://maps.apple.com/?daddr=B%E1%BA%A3o%20t%C3%A0ng%20Ch%E1%BB%A9ng%20t%C3%ADch%20Chi%E1%BA%BFn%20tranh%2C%2028%20V%C3%B5%20V%C4%83n%20T%E1%BA%A7n%2C%20Qu%E1%BA%ADn%203%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh&dirflg=d">🍎 Apple 地圖</a>
+              <a class="maplink grab" href="grab://open?screenType=BOOKING&dropOffKeyword=B%E1%BA%A3o%20t%C3%A0ng%20Ch%E1%BB%A9ng%20t%C3%ADch%20Chi%E1%BA%BFn%20tranh%2C%20Qu%E1%BA%ADn%203%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh">🚗 Grab 叫車</a>
             </div>
             <div class="tip warn">⚠️ 部分展區內容涉及戰爭傷亡與暴力影像，情緒敏感或帶小孩同行者請斟酌參觀節奏。</div>
           </div>
@@ -460,11 +602,22 @@
           <div class="dot">⛪</div>
           <div class="stop-card">
             <div class="stop-top"><span class="stop-title">新定教堂（粉紅教堂）<span class="en">Tân Định Church / Pink Church</span></span><span class="stop-time">16:45</span></div>
+            <figure class="photo">
+              <img src="images/tan-dinh-church.jpg" alt="粉紅色的新定教堂外觀" loading="lazy" onerror="this.closest('figure').classList.add('broken')">
+              <div class="fallback"><span class="emoji">⛪</span>圖片載入失敗，點下方連結查看</div>
+              <figcaption>圖片來源：<a href="https://commons.wikimedia.org/wiki/File:Tan_Dinh_Church.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></figcaption>
+            </figure>
             <div class="stop-desc">整棟教堂粉嫩馬卡龍色外觀搭配薄荷綠窗框，是 IG 打卡熱門地標，1876 年落成，是胡志明市歷史第二悠久的教堂。</div>
             <div class="info-grid">
               <div><b>地址</b>：289 Hai Bà Trưng, Quận 3</div>
               <div><b>開放參觀</b>：非彌撒時段皆可入內／外拍照，週日彌撒場次較多請避開</div>
               <div><b>服裝</b>：教堂為現役宗教場所，請注意遮蓋肩膀與膝蓋，避免過於暴露的穿著</div>
+            </div>
+            <div class="map-actions">
+              <span class="map-label">📍 從目前位置前往：</span>
+              <a class="maplink gmap" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=Nh%C3%A0%20th%E1%BB%9D%20T%C3%A2n%20%C4%90%E1%BB%8Bnh%2C%20289%20Hai%20B%C3%A0%20Tr%C6%B0ng%2C%20Qu%E1%BA%ADn%203%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh&travelmode=driving">🗺️ Google 地圖</a>
+              <a class="maplink amap" href="https://maps.apple.com/?daddr=Nh%C3%A0%20th%E1%BB%9D%20T%C3%A2n%20%C4%90%E1%BB%8Bnh%2C%20289%20Hai%20B%C3%A0%20Tr%C6%B0ng%2C%20Qu%E1%BA%ADn%203%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh&dirflg=d">🍎 Apple 地圖</a>
+              <a class="maplink grab" href="grab://open?screenType=BOOKING&dropOffKeyword=Nh%C3%A0%20th%E1%BB%9D%20T%C3%A2n%20%C4%90%E1%BB%8Bnh%2C%20Qu%E1%BA%ADn%203%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh">🚗 Grab 叫車</a>
             </div>
             <div class="tip">💡 攝影愛好者可考慮改在日出（06:30–07:30）或日落前（16:00–18:00）造訪，光線柔和、人潮也較少；正中午拍攝顏色容易死白。</div>
           </div>
@@ -482,11 +635,22 @@
           <div class="dot">☕</div>
           <div class="stop-card">
             <div class="stop-top"><span class="stop-title">咖啡公寓<span class="en">The Cafe Apartment, 42 Nguyễn Huệ</span></span><span class="stop-time">19:30</span></div>
+            <figure class="photo">
+              <img src="images/nguyen-hue-boulevard.jpg" alt="阮惠步行街夜景，咖啡公寓即位於此街道旁" loading="lazy" onerror="this.closest('figure').classList.add('broken')">
+              <div class="fallback"><span class="emoji">☕</span>圖片載入失敗，點下方連結查看</div>
+              <figcaption>圖片為阮惠步行街示意（咖啡公寓所在街道）· 來源：<a href="https://commons.wikimedia.org/wiki/File:Nguyen_Hue_Pedestrian_Boulevard_(37163950285).jpg" target="_blank" rel="noopener">Wikimedia Commons</a></figcaption>
+            </figure>
             <div class="stop-desc">1960 年代的老舊住宅公寓，如今從 2 樓到 9 樓被改造成數十間各具風格的獨立咖啡廳、酒吧與選品店，是體驗西貢新舊融合的代表景點。搭建築原本的老式鐵柵欄電梯上樓（限重、需排隊，體驗感十足），推薦挑選面向阮惠步行街（Nguyễn Huệ）的窗邊座位，可俯瞰夜晚燈火通明的步行街。</div>
             <div class="info-grid">
               <div><b>地址</b>：42 Nguyễn Huệ, Quận 1</div>
               <div><b>開放時間</b>：依各樓層店家而異，約 08:00–23:00 皆有店營業</div>
               <div><b>費用</b>：無門票，消費一杯飲料約 40,000–80,000 VND</div>
+            </div>
+            <div class="map-actions">
+              <span class="map-label">📍 從目前位置前往：</span>
+              <a class="maplink gmap" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=The%20Cafe%20Apartment%2C%2042%20Nguy%E1%BB%85n%20Hu%E1%BB%87%2C%20Qu%E1%BA%ADn%201%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh&travelmode=walking">🗺️ Google 地圖</a>
+              <a class="maplink amap" href="https://maps.apple.com/?daddr=42%20Nguy%E1%BB%85n%20Hu%E1%BB%87%2C%20Qu%E1%BA%ADn%201%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh&dirflg=w">🍎 Apple 地圖</a>
+              <a class="maplink grab" href="grab://open?screenType=BOOKING&dropOffKeyword=42%20Nguy%E1%BB%85n%20Hu%E1%BB%87%2C%20Qu%E1%BA%ADn%201%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh">🚗 Grab 叫車</a>
             </div>
             <div class="tip">💡 電梯常大排長龍，建議直接爬樓梯上高樓層再一路往下逛，順便探索沿路各家風格迥異的小店。</div>
           </div>
@@ -548,12 +712,29 @@
           <div class="dot">🕳️</div>
           <div class="stop-card">
             <div class="stop-top"><span class="stop-title">古芝地道<span class="en">Củ Chi Tunnels</span></span><span class="stop-time">09:00–12:30</span></div>
+            <figure class="photo">
+              <img src="images/cu-chi-tunnel.jpg" alt="古芝地道原始隧道入口" loading="lazy" onerror="this.closest('figure').classList.add('broken')">
+              <div class="fallback"><span class="emoji">🕳️</span>圖片載入失敗，點下方連結查看</div>
+              <figcaption>圖片來源：<a href="https://commons.wikimedia.org/wiki/File:Cu_Chi_original_tunnel.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></figcaption>
+            </figure>
             <div class="stop-desc">越戰期間越共游擊隊挖掘的地下通道網絡，全長曾超過 200 公里，兼具居住、醫療、軍事指揮功能。現場可實際鑽爬一小段加寬過的體驗隧道（幽閉恐懼者可考慮跳過），並參觀各式陷阱、地下廚房「灶」的排煙設計。</div>
             <div class="info-grid">
               <div><b>兩大景區</b>：<b>Bến Dinh</b>（離市區較近、隧道加寬較好走，設有實彈打靶場）／<b>Bến Dược</b>（較原始狹窄、設有烈士紀念塔，更有歷史氛圍）——跟團通常會安排其中一處</div>
               <div><b>開放時間</b>：07:00–17:00（最後入場約 16:00）</div>
               <div><b>門票</b>：外國旅客全票約 110,000–150,000 VND；兒童約 55,000–75,000 VND（跟團費用通常已含門票）</div>
               <div><b>其他消費</b>：實彈打靶約每發 1–3 美元（僅 Bến Dinh）、語音導覽約 50,000 VND</div>
+            </div>
+            <div class="map-actions">
+              <span class="map-label">📍 Bến Dinh：</span>
+              <a class="maplink gmap" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=%C4%90%E1%BB%8Ba%20%C4%91%E1%BA%A1o%20C%E1%BB%A7%20Chi%20B%E1%BA%BFn%20%C4%90%C3%ACnh%2C%20C%E1%BB%A7%20Chi%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh&travelmode=driving">🗺️ Google</a>
+              <a class="maplink amap" href="https://maps.apple.com/?daddr=%C4%90%E1%BB%8Ba%20%C4%91%E1%BA%A1o%20C%E1%BB%A7%20Chi%20B%E1%BA%BFn%20%C4%90%C3%ACnh%2C%20C%E1%BB%A7%20Chi%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh&dirflg=d">🍎 Apple</a>
+              <a class="maplink grab" href="grab://open?screenType=BOOKING&dropOffKeyword=%C4%90%E1%BB%8Ba%20%C4%91%E1%BA%A1o%20C%E1%BB%A7%20Chi%20B%E1%BA%BFn%20%C4%90%C3%ACnh">🚗 Grab</a>
+            </div>
+            <div class="map-actions">
+              <span class="map-label">📍 Bến Dược：</span>
+              <a class="maplink gmap" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=%C4%90%E1%BB%8Ba%20%C4%91%E1%BA%A1o%20C%E1%BB%A7%20Chi%20B%E1%BA%BFn%20D%C6%B0%E1%BB%A3c%2C%20C%E1%BB%A7%20Chi%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh&travelmode=driving">🗺️ Google</a>
+              <a class="maplink amap" href="https://maps.apple.com/?daddr=%C4%90%E1%BB%8Ba%20%C4%91%E1%BA%A1o%20C%E1%BB%A7%20Chi%20B%E1%BA%BFn%20D%C6%B0%E1%BB%A3c%2C%20C%E1%BB%A7%20Chi%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh&dirflg=d">🍎 Apple</a>
+              <a class="maplink grab" href="grab://open?screenType=BOOKING&dropOffKeyword=%C4%90%E1%BB%8Ba%20%C4%91%E1%BA%A1o%20C%E1%BB%A7%20Chi%20B%E1%BA%BFn%20D%C6%B0%E1%BB%A3c">🚗 Grab</a>
             </div>
             <div class="tip">💡 現場濕熱、蚊蟲較多，記得穿長褲、噴防蚊液；隧道內狹窄悶熱且需彎腰前進，體型較高大或不適應密閉空間者可量力而為。</div>
           </div>
@@ -580,9 +761,31 @@
           <div class="stop-card">
             <div class="stop-top"><span class="stop-title">西貢摩天觀景台<span class="en">Landmark 81 SkyView 或 Bitexco Saigon Skydeck</span></span><span class="stop-time">15:30</span></div>
             <div class="stop-desc">市區有兩個可俯瞰全城的觀景台可以擇一：</div>
+            <figure class="photo">
+              <img src="images/landmark81.jpg" alt="從西貢河眺望 Landmark 81" loading="lazy" onerror="this.closest('figure').classList.add('broken')">
+              <div class="fallback"><span class="emoji">🌆</span>圖片載入失敗，點下方連結查看</div>
+              <figcaption>Landmark 81 · 圖片來源：<a href="https://commons.wikimedia.org/wiki/File:Landmark_81_view_from_Saigon_River.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></figcaption>
+            </figure>
             <div class="info-grid">
               <div><b>Landmark 81 SkyView</b>：全越南最高樓，79–81 樓觀景區，81 樓為戶外高空體驗區，視野最遼闊、離市中心較遠（約需 Grab 15–20 分鐘）。平日票約 300,000 VND／人，假日約 500,000 VND／人；開放時間約 10:00–21:30</div>
               <div><b>Bitexco Saigon Skydeck</b>：位於第一郡市中心，交通最方便，49 樓為知名的「直升機停機坪」造型樓層。票價約 20 萬越南盾上下（依方案而定，含 49 樓奧黛博物館與礦泉水），開放時間約 09:30–21:30（最後入場 20:00）</div>
+            </div>
+            <figure class="photo">
+              <img src="images/bitexco-tower.jpg" alt="Bitexco 金融塔外觀，頂部為直升機停機坪造型" loading="lazy" onerror="this.closest('figure').classList.add('broken')">
+              <div class="fallback"><span class="emoji">🏙️</span>圖片載入失敗，點下方連結查看</div>
+              <figcaption>Bitexco Financial Tower · 圖片來源：<a href="https://commons.wikimedia.org/wiki/File:Bitexco_Financial_Tower,_Ho_Chi_Minh_City,_Vietnam.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></figcaption>
+            </figure>
+            <div class="map-actions">
+              <span class="map-label">📍 Landmark 81：</span>
+              <a class="maplink gmap" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=Landmark%2081%20SkyView%2C%20720A%20%C4%90i%E1%BB%87n%20Bi%C3%AAn%20Ph%E1%BB%A7%2C%20B%C3%ACnh%20Th%E1%BA%A1nh%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh&travelmode=driving">🗺️ Google</a>
+              <a class="maplink amap" href="https://maps.apple.com/?daddr=Landmark%2081%2C%20720A%20%C4%90i%E1%BB%87n%20Bi%C3%AAn%20Ph%E1%BB%A7%2C%20B%C3%ACnh%20Th%E1%BA%A1nh%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh&dirflg=d">🍎 Apple</a>
+              <a class="maplink grab" href="grab://open?screenType=BOOKING&dropOffKeyword=Landmark%2081%2C%20B%C3%ACnh%20Th%E1%BA%A1nh%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh">🚗 Grab</a>
+            </div>
+            <div class="map-actions">
+              <span class="map-label">📍 Bitexco：</span>
+              <a class="maplink gmap" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=Bitexco%20Financial%20Tower%2C%202%20H%E1%BA%A3i%20Tri%E1%BB%81u%2C%20Qu%E1%BA%ADn%201%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh&travelmode=driving">🗺️ Google</a>
+              <a class="maplink amap" href="https://maps.apple.com/?daddr=Bitexco%20Financial%20Tower%2C%202%20H%E1%BA%A3i%20Tri%E1%BB%81u%2C%20Qu%E1%BA%ADn%201%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh&dirflg=d">🍎 Apple</a>
+              <a class="maplink grab" href="grab://open?screenType=BOOKING&dropOffKeyword=Bitexco%20Financial%20Tower%2C%20Qu%E1%BA%ADn%201%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh">🚗 Grab</a>
             </div>
             <div class="tip">💡 若不想再花交通時間，Bitexco 位置更順路；若想看到最完整的城市天際線與夕陽全景，Landmark 81 視野更佳，建議抓在日落前 1 小時入場，可同時收集白天與夜景兩種畫面。</div>
           </div>
@@ -596,6 +799,12 @@
             <div class="info-grid">
               <div><b>地址</b>：第一郡（詳細地址請以 Google 地圖當日搜尋「The New Playground」為準）</div>
               <div><b>開放時間</b>：約 10:00–22:00</div>
+            </div>
+            <div class="map-actions">
+              <span class="map-label">📍 從目前位置前往：</span>
+              <a class="maplink gmap" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=The%20New%20Playground%2C%20Qu%E1%BA%ADn%201%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh&travelmode=walking">🗺️ Google 地圖</a>
+              <a class="maplink amap" href="https://maps.apple.com/?daddr=The%20New%20Playground%2C%20Qu%E1%BA%ADn%201%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh&dirflg=w">🍎 Apple 地圖</a>
+              <a class="maplink grab" href="grab://open?screenType=BOOKING&dropOffKeyword=The%20New%20Playground%2C%20Qu%E1%BA%ADn%201%2C%20H%E1%BB%93%20Ch%C3%AD%20Minh">🚗 Grab 叫車</a>
             </div>
           </div>
         </div>
@@ -664,6 +873,11 @@
           <div class="dot">🌴</div>
           <div class="stop-card">
             <div class="stop-top"><span class="stop-title">湄公河行程<span class="en">Mekong Delta – Mỹ Tho &amp; Bến Tre</span></span><span class="stop-time">10:00–15:30</span></div>
+            <figure class="photo">
+              <img src="images/mekong-delta.jpg" alt="湄公河三角洲水道風光" loading="lazy" onerror="this.closest('figure').classList.add('broken')">
+              <div class="fallback"><span class="emoji">🌴</span>圖片載入失敗，點下方連結查看</div>
+              <figcaption>圖片來源：<a href="https://commons.wikimedia.org/wiki/File:Mekong_delta.jpg" target="_blank" rel="noopener">Wikimedia Commons</a></figcaption>
+            </figure>
             <div class="stop-desc">典型行程涵蓋以下幾個環節，實際順序依旅行社安排：</div>
             <div class="info-grid">
               <div><b>大船遊前江</b>：搭乘機動大船航行於湄公河支流「前江」（Tiền Giang），沿岸可見水上人家與漁船</div>
@@ -673,6 +887,18 @@
               <div><b>熱帶果園</b>：漫步果園並試吃當季新鮮水果（龍眼、芒果、火龍果等依季節而定）</div>
               <div><b>南越民謠表演</b>：部分行程安排聆聽越南南部傳統「才子彈唱」（Đờn ca tài tử）民俗音樂</div>
               <div><b>可加選項目</b>：騎單車遊島、跨「猴橋」獨木橋體驗、吊床休息區、鱷魚farm、永長寺（Vĩnh Tràng Pagoda）參觀</div>
+            </div>
+            <div class="map-actions">
+              <span class="map-label">📍 美萩 Mỹ Tho：</span>
+              <a class="maplink gmap" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=M%E1%BB%B9%20Tho%2C%20Ti%E1%BB%81n%20Giang%2C%20Vi%E1%BB%87t%20Nam&travelmode=driving">🗺️ Google</a>
+              <a class="maplink amap" href="https://maps.apple.com/?daddr=M%E1%BB%B9%20Tho%2C%20Ti%E1%BB%81n%20Giang%2C%20Vi%E1%BB%87t%20Nam&dirflg=d">🍎 Apple</a>
+              <a class="maplink grab" href="grab://open?screenType=BOOKING&dropOffKeyword=M%E1%BB%B9%20Tho%2C%20Ti%E1%BB%81n%20Giang">🚗 Grab</a>
+            </div>
+            <div class="map-actions">
+              <span class="map-label">📍 檳椥 Bến Tre：</span>
+              <a class="maplink gmap" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=B%E1%BA%BFn%20Tre%2C%20Vi%E1%BB%87t%20Nam&travelmode=driving">🗺️ Google</a>
+              <a class="maplink amap" href="https://maps.apple.com/?daddr=B%E1%BA%BFn%20Tre%2C%20Vi%E1%BB%87t%20Nam&dirflg=d">🍎 Apple</a>
+              <a class="maplink grab" href="grab://open?screenType=BOOKING&dropOffKeyword=B%E1%BA%BFn%20Tre%2C%20Vi%E1%BB%87t%20Nam">🚗 Grab</a>
             </div>
             <div class="tip">💡 全程戶外活動較多、日曬強烈，務必做好防曬與補水；船隻晃動較明顯，容易暈船者可提前服用暈船藥。</div>
           </div>
@@ -795,6 +1021,7 @@
 <footer>
   <div class="flags">🇻🇳</div>
   <p>胡志明市 3 日行程規劃 · 內容整理自公開旅遊資訊，實際門票、時間、價格請以現場或官方公告為準。</p>
+  <p>景點與美食照片原始來源：Wikimedia Commons（點圖說可查看出處與授權），圖檔實際存放於本專案 <code>images/</code> 資料夾內，不依賴外部即時連結。地圖／叫車連結由 Google 地圖、Apple 地圖與 Grab 官方 URL Scheme 產生，實際能否開啟對應 App 依裝置安裝狀況而定。</p>
 </footer>
 
 </body>
